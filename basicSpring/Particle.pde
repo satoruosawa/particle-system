@@ -22,7 +22,7 @@ class Particle {
 
   void update() {
     for (Field f : fields) {
-      f.getForce(this);
+      force.add(f.getForce(position));
     }
     velocity.add(force);
     position.add(velocity);
