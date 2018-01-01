@@ -1,16 +1,16 @@
 class VectorField {
-  ArrayList<PVector> vectors;
-  int fieldWidth;
-  int fieldHeight;
+  private ArrayList<PVector> vectors;
+  private int fieldWidth;
+  private int fieldHeight;
 
-  VectorField() {
+  public VectorField() {
     vectors = new ArrayList<PVector>();
     fieldWidth = 10;
     fieldHeight = 10;
     randomForce();
   }
 
-  void randomForce() {
+  public void randomForce() {
     for (int j = 0; j < fieldHeight; j++) {
       for (int i = 0; i < fieldWidth; i++) {
         PVector v = new PVector(random(-1, 1), random(-1, 1));
@@ -20,7 +20,7 @@ class VectorField {
     }
   }
 
-  PVector getForce(PVector position) {
+  public PVector getForce(PVector position) {
     float xPct = position.x / width;
     float yPct = position.y / height;
     if ((xPct < 0 || xPct > 1) || (yPct < 0 || yPct > 1)){

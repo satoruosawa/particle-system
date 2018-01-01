@@ -1,11 +1,11 @@
 class Spring {
-  Particle particleA;
-  Particle particleB;
-  float springLength;
-  float springiness;
-  boolean isDead;
+  private Particle particleA;
+  private Particle particleB;
+  private float springLength;
+  private float springiness;
+  private boolean isDead;
 
-  Spring(Particle particleA, Particle particleB, float springLength,
+  public Spring(Particle particleA, Particle particleB, float springLength,
       float springiness) {
     this.particleA = particleA;
     this.particleB = particleB;
@@ -14,7 +14,7 @@ class Spring {
     isDead = false;
   }
 
-  void update() {
+  public void update() {
     if ((particleA == null) || (particleB == null)) {
       isDead = true;
       return;
@@ -28,7 +28,7 @@ class Spring {
     particleB.addForce(forceToAdd.mult(-1.0));
   }
 
-  void draw() {
+  public void draw() {
     noFill();
     stroke(0,  255 - abs(256 - particleA.lifespan));
     PVector posA = particleA.position();
@@ -36,7 +36,7 @@ class Spring {
     line(posA.x, posA.y, posB.x, posB.y);
   }
 
-  boolean isDead() {
+  public boolean isDead() {
     return isDead;
   }
 }

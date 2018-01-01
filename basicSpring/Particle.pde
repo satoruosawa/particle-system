@@ -1,26 +1,26 @@
 class Particle {
-  ArrayList<Field> fields = new ArrayList<Field>();
+  private ArrayList<Field> fields = new ArrayList<Field>();
   private PVector position;
-  PVector velocity;
-  PVector force;
-  float lifespan;
+  private PVector velocity;
+  private PVector force;
+  private float lifespan;
 
-  Particle(PVector position) {
+  public Particle(PVector position) {
     force = new PVector(0.0, 0.0);
     velocity = new PVector(0.0, 0.0);
     this.position = position.copy();
     lifespan = 511.0;
   }
 
-  void resetForce() {
+  public void resetForce() {
     force.set(0.0, 0.0);
   }
 
-  void addForce(PVector force) {
+  public void addForce(PVector force) {
     this.force.add(force);
   }
 
-  void update() {
+  public void update() {
     for (Field f : fields) {
       force.add(f.getForce(position));
     }
@@ -29,17 +29,17 @@ class Particle {
     lifespan -= 1.0;
   }
 
-  void draw() {
+  public void draw() {
     noStroke();
     fill(0, 255 - abs(256 - lifespan));
     ellipse(position.x, position.y, 10, 10);
   }
 
-  void addField(Field f) {
+  public void addField(Field f) {
     fields.add(f);
   }
 
-  boolean isDead() {
+  public boolean isDead() {
     if (lifespan < 0.0) {
       return true;
     } else {
@@ -47,11 +47,11 @@ class Particle {
     }
   }
 
-  PVector position() {
+  public PVector position() {
     return position;
   }
 
-  float lifespan() {
+  public float lifespan() {
     return lifespan;
   }
 }

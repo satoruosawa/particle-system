@@ -1,11 +1,11 @@
 class ParticleSystem {
-  ArrayList<Particle> particles;
+  private ArrayList<Particle> particles;
 
-  ParticleSystem() {
+  public ParticleSystem() {
     particles = new ArrayList<Particle>();
   }
 
-  void update() {
+  public void update() {
     for (int i = particles.size() - 1; i >= 0; i--) {
       Particle p = particles.get(i);
       p.resetForce();
@@ -16,13 +16,13 @@ class ParticleSystem {
     }
   }
 
-  void draw() {
+  public void draw() {
     for (Particle p : particles) {
       p.draw();
     }
   }
 
-  void addParticle(Particle p) {
+  public void addParticle(Particle p) {
     particles.add(p);
   }
 }

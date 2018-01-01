@@ -1,13 +1,13 @@
 class ParticleSystem {
-  ArrayList<Particle> particles;
-  ArrayList<Spring> springs;
+  private ArrayList<Particle> particles;
+  private ArrayList<Spring> springs;
 
-  ParticleSystem() {
+  public ParticleSystem() {
     particles = new ArrayList<Particle>();
     springs = new ArrayList<Spring>();
   }
 
-  void update() {
+  public void update() {
     for (Particle p : particles) {
       p.resetForce();
     }
@@ -29,7 +29,7 @@ class ParticleSystem {
     }
   }
 
-  void draw() {
+  public void draw() {
     for (Particle p : particles) {
       p.draw();
     }
@@ -38,11 +38,11 @@ class ParticleSystem {
     }
   }
 
-  void addParticle(Particle p) {
+  public void addParticle(Particle p) {
     particles.add(p);
   }
 
-  void addSpring(Spring s) {
+  public void addSpring(Spring s) {
     springs.add(s);
   }
 }
