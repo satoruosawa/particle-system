@@ -20,7 +20,7 @@ class Particle {
 
   public void update() {
     for (VectorField f : fields) {
-      force.add(f.getForce(position));
+      force.add(f.getForce(this));
     }
     velocity.add(force);
     position.add(velocity);
@@ -45,7 +45,5 @@ class Particle {
     }
   }
 
-  public PVector position() {
-    return position;
-  }
+  public PVector position() { return position; }
 }

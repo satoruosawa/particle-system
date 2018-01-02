@@ -1,3 +1,3 @@
 abstract class Field {
-  public abstract PVector getForce(PVector position);
+  public abstract PVector getForce(Particle particle);
 }

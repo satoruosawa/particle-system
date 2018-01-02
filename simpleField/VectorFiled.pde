@@ -20,9 +20,9 @@ class VectorField {
     }
   }
 
-  public PVector getForce(PVector position) {
-    float xPct = position.x / width;
-    float yPct = position.y / height;
+  public PVector getForce(Particle particle) {
+    float xPct = particle.position().x / width;
+    float yPct = particle.position().y / height;
     if ((xPct < 0 || xPct > 1) || (yPct < 0 || yPct > 1)){
   		return new PVector(0, 0);
   	}
