@@ -10,7 +10,7 @@ class VectorField {
     randomForce();
   }
 
-  public void randomForce() {
+  private void randomForce() {
     for (int j = 0; j < fieldHeight; j++) {
       for (int i = 0; i < fieldWidth; i++) {
         PVector v = new PVector(random(-1, 1), random(-1, 1));

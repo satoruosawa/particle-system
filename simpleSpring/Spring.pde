@@ -19,13 +19,12 @@ class Spring {
       isDead = true;
       return;
     }
-    PVector posA = particleA.position();
-    PVector posB = particleB.position();
-    float dist = PVector.dist(posA, posB);
+    PVector posBtoA = PVector.sub(particleA.position(), particleB.position());
+    float dist = posBtoA.mag();
     float springForce = (springiness * (springLength - dist));
-    PVector forceToAdd = PVector.sub(posA, posB).normalize().mult(springForce);
-    particleA.addForce(forceToAdd);
-    particleB.addForce(forceToAdd.mult(-1.0));
+    posBtoA.normalize();
+    particleA.addForce(posBtoA.mult(springForce));
+    particleB.addForce(posBtoA.mult(-1.0));
   }
 
   public void draw() {
