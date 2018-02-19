@@ -22,7 +22,5 @@ class ParticleSystem {
     }
   }
 
-  public void addParticle(Particle p) {
-    particles.add(p);
-  }
+  public void addParticle(Particle p) { particles.add(p); }
 }
