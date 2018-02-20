@@ -1,4 +1,5 @@
 ParticleSystem particleSystem = new ParticleSystem();
+VectorField vectorField = new VectorField();
 
 void setup() {
   size(500, 500);
@@ -6,9 +7,9 @@ void setup() {
 
 void update() {
   Particle p = new Particle();
-  p.position(new PVector(width / 2, height / 2));
-  p.velocity(new PVector(random(-1, 1), random(-1, 1)));
-  p.lifespan(255);
+  p.position(new PVector(random(0, width), random(0, height)));
+  p.addField(vectorField);
+  p.lifespan(511);
   p.size(20);
   particleSystem.addParticle(p);
   particleSystem.update();

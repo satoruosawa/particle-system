@@ -1,12 +1,18 @@
 class ParticleSystem {
   private ArrayList<Particle> particles = new ArrayList<Particle>();
+  private ArrayList<MutualForce> mutualForce = new ArrayList<MutualForce>();
 
   public void update() {
-    for (int i = particles.size() - 1; i >= 0; i--) {
-      Particle p = particles.get(i);
+    for (Particle p : particles) {
       p.resetForce();
+    }
+
+    for (MutualForce m : mutualForce) {
+      m.update();
+    }
+
+    for (Particle p : particles) {
       p.update();
-      if (p.isDead()) particles.remove(i);
     }
   }
 
@@ -17,4 +23,5 @@ class ParticleSystem {
   }
 
   public void addParticle(Particle p) { particles.add(p); }
+  public void addMutualForce(MutualForce m) { mutualForce.add(m); }
 }
