@@ -6,7 +6,6 @@ class ParticleSystem {
       Particle p = particles.get(i);
       p.resetForce();
       p.update();
-      if (p.isDead()) particles.remove(i);
     }
   }
 
