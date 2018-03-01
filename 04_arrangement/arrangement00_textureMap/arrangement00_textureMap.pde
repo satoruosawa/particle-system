@@ -15,6 +15,7 @@ void setup() {
         Particle p = new Particle();
         p.position(new PVector(i, j));
         p.particleColor(c);
+        p.velocity(new PVector(random(-1, 1), random(-1, 1)));
         particleSystem.addParticle(p);
       }
     }
@@ -22,7 +23,8 @@ void setup() {
 }
 
 void update() {
-  particleSystem.update();
+  if (mousePressed)
+    particleSystem.update();
 }
 
 void draw() {
