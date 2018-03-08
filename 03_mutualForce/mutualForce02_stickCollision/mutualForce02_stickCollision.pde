@@ -1,4 +1,5 @@
 ParticleSystem particleSystem;
+BasicField basicField = new BasicField();
 
 void setup() {
   size(500, 500);
@@ -24,6 +25,7 @@ void addSpring() {
   pA.position(new PVector(random(0., width), random(0., height)));
   pA.velocity(new PVector(random(-1, 1), random(-1, 1)));
   pA.size(20);
+  pA.addField(basicField);
   particleSystem.addParticle(pA);
 
   float posBAngle = random(0, TWO_PI);
@@ -37,6 +39,7 @@ void addSpring() {
   );
   pB.velocity(new PVector(random(-1, 1), random(-1, 1)));
   pB.size(20);
+  pB.addField(basicField);
   particleSystem.addParticle(pB);
 
   Stick s = new Stick(pA, pB);

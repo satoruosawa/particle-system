@@ -13,11 +13,22 @@ class Stick extends MutualForce {
     PVector posAtoB = PVector.sub(particleB.position(), particleA.position());
     float diff = posAtoB.mag() - stickLength;
     posAtoB.normalize();
-    PVector posToAdd = posAtoB.mult(diff * 0.5);
-    particleA.position().add(posToAdd);
-    particleA.velocity().add(posToAdd);
-    particleB.position().add(posToAdd.mult(-1.0));
-    particleB.velocity().add(posToAdd);
+    PVector posAToAdd;
+    PVector posBToAdd;
+    if (particleA.fragCollide()) {
+      posAToAdd = new PVector(0, 0);
+      posBToAdd = posAtoB.mult(-diff);
+    } else if (particleB.fragCollide()) {
+      posAToAdd = posAtoB.mult(diff);
+      posBToAdd = new PVector(0, 0);
+    } else {
+      posAToAdd = PVector.mult(posAtoB, diff * 0.5);
+      posBToAdd = PVector.mult(posAtoB, -diff * 0.5);
+    }
+    particleA.position().add(posAToAdd);
+    particleA.velocity().add(posAToAdd);
+    particleB.position().add(posBToAdd);
+    particleB.velocity().add(posBToAdd);
   }
 
   public void draw() {
