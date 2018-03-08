@@ -20,7 +20,7 @@ class VectorField extends Field {
     }
   }
 
-  public void willParticleUpdate(Particle particle) {
+  public void willUpdateParticle(Particle particle) {
     int fieldIndexX = int(particle.position().x / width * float(fieldRow - 1));
     int fieldIndexY = int(
       particle.position().y / height * float(fieldColumn - 1)
@@ -38,5 +38,5 @@ class VectorField extends Field {
     particle.addForce(vectorForce);
   }
 
-  public void didParticleUpdate(Particle particle) {}
+  public void didUpdateParticle(Particle particle) {}
 }

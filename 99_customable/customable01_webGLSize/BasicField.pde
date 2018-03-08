@@ -10,11 +10,11 @@ class BasicField extends Field {
     cor = 1;
   }
 
-  public void willParticleUpdate(Particle particle) {
+  public void willUpdateParticle(Particle particle) {
     particle.addForce(PVector.mult(particle.velocity(), -friction));
   }
 
-  public void didParticleUpdate(Particle particle) {
+  public void didUpdateParticle(Particle particle) {
     wallBehavior(particle);
   }
 

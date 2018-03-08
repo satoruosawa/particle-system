@@ -11,11 +11,11 @@ class Particle {
 
   public void update() {
     for (Field f : fields) {
-      f.willParticleUpdate(this);
+      f.willUpdateParticle(this);
     }
     updatePosition();
     for (Field f : fields) {
-      f.didParticleUpdate(this);
+      f.didUpdateParticle(this);
     }
     lifespan -= 1;
   }
