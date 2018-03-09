@@ -44,6 +44,5 @@ void addSpring() {
 
   Stick s = new Stick(pA, pB);
   s.stickLength(100);
-  s.springiness(0.01);
   particleSystem.addMutualForce(s);
 }

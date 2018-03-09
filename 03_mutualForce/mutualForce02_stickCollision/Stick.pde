@@ -1,6 +1,5 @@
 class Stick extends MutualForce {
   private float stickLength = 1;
-  private float springiness = 1;
 
   public Stick(Particle particleA, Particle particleB) {
     super(particleA, particleB);
@@ -40,5 +39,4 @@ class Stick extends MutualForce {
   }
 
   public void stickLength(float s) { stickLength = s; }
-  public void springiness(float s) { springiness = s; }
 }
