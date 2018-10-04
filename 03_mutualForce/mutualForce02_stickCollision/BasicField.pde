@@ -5,7 +5,6 @@ class BasicField extends Field {
 
   public BasicField() {
     super();
-    wallBehavior = WallBehavior.BOUNCE;
     friction = 0;
     coef = 1;
   }
@@ -15,16 +14,18 @@ class BasicField extends Field {
   }
 
   public void didUpdateParticle(Particle particle) {
-    wallBehavior(particle);
+    applyWallBehavior(particle);
   }
 
-  public void wallBehavior(Particle particle) {
+  private void applyWallBehavior(Particle particle) {
     switch (wallBehavior) {
       case BOUNCE:
         bounceOfWalls(particle);
         break;
       case THROUGH:
         throughOfWalls(particle);
+        break;
+      default:
         break;
     }
   }
@@ -34,25 +35,21 @@ class BasicField extends Field {
     float xmax = width - particle.size() / 2;
     float ymin = 0 + particle.size() / 2;
     float ymax = height - particle.size() / 2;
-    PVector pos = particle.position();
-    PVector vel = particle.velocity();
-    if (pos.x < xmin) {
-      pos.x = xmin + (xmin - pos.x);
-      vel.x *= -coef;
-      particle.collide();
-    } else if (pos.x > xmax) {
-      pos.x = xmax - (pos.x - xmax);
-      vel.x *= -coef;
-      particle.collide();
+    PVector position = particle.position();
+    PVector velocity = particle.velocity();
+    if (position.x < xmin) {
+      position.x = xmin + (xmin - position.x);
+      velocity.x *= -coef;
+    } else if (position.x > xmax) {
+      position.x = xmax - (position.x - xmax);
+      velocity.x *= -coef;
     }
-    if (pos.y < ymin) {
-      pos.y = ymin + (ymin - pos.y);
-      vel.y *= -coef;
-      particle.collide();
-    } else if (pos.y > ymax) {
-      pos.y = ymax - (pos.y - ymax);
-      vel.y *= -coef;
-      particle.collide();
+    if (position.y < ymin) {
+      position.y = ymin + (ymin - position.y);
+      velocity.y *= -coef;
+    } else if (position.y > ymax) {
+      position.y = ymax - (position.y - ymax);
+      velocity.y *= -coef;
     }
   }
 
@@ -63,22 +60,27 @@ class BasicField extends Field {
     float ymax = height + particle.size() / 2;
     float shiftWidth = width + particle.size();
     float shiftHeight = width + particle.size();
-    PVector pos = particle.position();
-    PVector vel = particle.velocity();
-    if (pos.x < xmin) {
-      pos.x += shiftWidth;
-    } else if (pos.x > xmax) {
-      pos.x -= shiftWidth;
+    PVector position = particle.position();
+    PVector velocity = particle.velocity();
+    if (position.x < xmin) {
+      position.x += shiftWidth;
+      velocity.x *= coef;
+    } else if (position.x > xmax) {
+      position.x -= shiftWidth;
+      velocity.x *= coef;
     }
-    if (pos.y < ymin) {
-      pos.y += shiftHeight;
-    } else if (pos.y > ymax) {
-      pos.y -= shiftHeight;
+    if (position.y < ymin) {
+      position.y += shiftHeight;
+      velocity.y *= coef;
+    } else if (position.y > ymax) {
+      position.y -= shiftHeight;
+      velocity.y *= coef;
     }
   }
 
   public void friction(float f) { friction = f; }
   public void coef(float c) { coef = c; }
+  public void wallBehavior(WallBehavior w) { wallBehavior = w; }
 }
 
 enum WallBehavior {

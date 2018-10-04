@@ -23,9 +23,8 @@ class Particle {
   public boolean isDead() {
     if (life < 0) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   public void position(PVector p) { position = p; }

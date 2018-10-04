@@ -1,9 +1,9 @@
-ParticleSystem particleSystem;
+ParticleSystem particleSystem = new ParticleSystem();
 BasicField basicField = new BasicField();
 
 void setup() {
   size(500, 500);
-  particleSystem = new ParticleSystem();
+  basicField.wallBehavior(WallBehavior.BOUNCE);
 }
 
 void update() {
