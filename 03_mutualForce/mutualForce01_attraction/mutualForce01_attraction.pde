@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 ParticleSystem particleSystem = new ParticleSystem();
 
 void setup() {

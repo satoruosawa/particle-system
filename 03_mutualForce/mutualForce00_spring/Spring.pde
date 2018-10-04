@@ -6,7 +6,7 @@ class Spring extends MutualForce {
     super(particleA, particleB);
   }
 
-  public void updateParticles() {
+  public void willUpdateParticles() {
     PVector positionAfromB = PVector.sub(
       particleA.position(),
       particleB.position()
@@ -16,6 +16,9 @@ class Spring extends MutualForce {
     positionAfromB.normalize();
     particleA.addForce(positionAfromB.mult(springForce));
     particleB.addForce(positionAfromB.mult(-1.0));
+  }
+
+  public void didUpdateParticles() {
   }
 
   public void draw() {

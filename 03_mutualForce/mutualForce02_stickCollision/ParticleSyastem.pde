@@ -11,11 +11,17 @@ class ParticleSystem {
       m.willUpdateParticles();
     }
 
-    for (Particle p : particles) {
+    Iterator<Particle> particleIterator = particles.iterator();
+    while (particleIterator.hasNext()) {
+      Particle p = particleIterator.next();
       p.update();
+      if (p.isDead()) particleIterator.remove();
     }
 
-    for (MutualForce m : mutualForces) {
+    Iterator<MutualForce> mutualForceIterator = mutualForces.iterator();
+    while (mutualForceIterator.hasNext()) {
+      MutualForce m = mutualForceIterator.next();
+      if (m.isDead()) mutualForceIterator.remove();
       m.didUpdateParticles();
     }
   }
