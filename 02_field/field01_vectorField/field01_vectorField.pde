@@ -9,9 +9,10 @@ void update() {
   Particle p = new Particle();
   p.position(new PVector(random(0, width), random(0, height)));
   p.addField(vectorField);
-  p.lifespan(511);
+  p.life(511);
   p.size(20);
   particleSystem.addParticle(p);
+
   particleSystem.update();
 }
 
