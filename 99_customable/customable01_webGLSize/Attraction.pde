@@ -1,6 +1,6 @@
 class Attraction extends MutualForce {
-  private float strength = 1;
-  private float sleshhold = 1;
+  private float strength = 1.0;
+  private float sleshhold = 1.0;
 
   public Attraction(Particle particleA, Particle particleB) {
     super(particleA, particleB);
@@ -10,7 +10,7 @@ class Attraction extends MutualForce {
     PVector posBtoA = PVector.sub(particleA.position(), particleB.position());
     float distance = posBtoA.mag();
     if (distance < sleshhold) {
-      float pct = 1 - (distance / sleshhold);
+      float pct = 1.0 - (distance / sleshhold);
       posBtoA.normalize();
       PVector frcToAdd = posBtoA.mult(-pct * strength);
       particleA.addForce(frcToAdd);

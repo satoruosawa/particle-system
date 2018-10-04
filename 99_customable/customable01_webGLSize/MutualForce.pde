@@ -8,6 +8,7 @@ abstract class MutualForce {
     this.particleB = particleB;
   }
 
+  // TODO: change update to willUpdateParticles and didUpdateParticles
   public void update() {
     if (particleA == null || particleB == null) {
       isDead = true;
