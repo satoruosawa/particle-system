@@ -1,13 +1,13 @@
 class BasicField extends Field {
   private float friction;
   private WallBehavior wallBehavior;
-  private float cor;
+  private float coef;
 
   public BasicField() {
     super();
     wallBehavior = WallBehavior.BOUNCE;
     friction = 0;
-    cor = 1;
+    coef = 1;
   }
 
   public void willUpdateParticle(Particle particle) {
@@ -38,20 +38,20 @@ class BasicField extends Field {
     PVector vel = particle.velocity();
     if (pos.x < xmin) {
       pos.x = xmin + (xmin - pos.x);
-      vel.x *= -cor;
+      vel.x *= -coef;
       particle.collide();
     } else if (pos.x > xmax) {
       pos.x = xmax - (pos.x - xmax);
-      vel.x *= -cor;
+      vel.x *= -coef;
       particle.collide();
     }
     if (pos.y < ymin) {
       pos.y = ymin + (ymin - pos.y);
-      vel.y *= -cor;
+      vel.y *= -coef;
       particle.collide();
     } else if (pos.y > ymax) {
       pos.y = ymax - (pos.y - ymax);
-      vel.y *= -cor;
+      vel.y *= -coef;
       particle.collide();
     }
   }
@@ -78,7 +78,7 @@ class BasicField extends Field {
   }
 
   public void friction(float f) { friction = f; }
-  public void cor(float c) { cor = c; }
+  public void coef(float c) { coef = c; }
 }
 
 enum WallBehavior {

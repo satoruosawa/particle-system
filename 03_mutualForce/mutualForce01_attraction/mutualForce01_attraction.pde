@@ -21,7 +21,7 @@ void draw() {
 void addAttraction() {
   Particle pA = new Particle();
   pA.position(new PVector(random(0., width), random(0., height)));
-  pA.lifespan(511);
+  pA.life(511);
   pA.size(20);
   particleSystem.addParticle(pA);
 
@@ -29,7 +29,7 @@ void addAttraction() {
   float posBLength = 60;
   Particle pB = new Particle();
   pB.position(new PVector(random(0., width), random(0., height)));
-  pB.lifespan(511);
+  pB.life(511);
   pB.size(20);
   particleSystem.addParticle(pB);
 

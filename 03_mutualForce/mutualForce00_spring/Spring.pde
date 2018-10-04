@@ -7,20 +7,23 @@ class Spring extends MutualForce {
   }
 
   public void updateParticles() {
-    PVector posBtoA = PVector.sub(particleA.position(), particleB.position());
-    float dist = posBtoA.mag();
-    float springForce = (springiness * (springLength - dist));
-    posBtoA.normalize();
-    particleA.addForce(posBtoA.mult(springForce));
-    particleB.addForce(posBtoA.mult(-1.0));
+    PVector positionAfromB = PVector.sub(
+      particleA.position(),
+      particleB.position()
+    );
+    float distance = positionAfromB.mag();
+    float springForce = (springiness * (springLength - distance));
+    positionAfromB.normalize();
+    particleA.addForce(positionAfromB.mult(springForce));
+    particleB.addForce(positionAfromB.mult(-1.0));
   }
 
   public void draw() {
     noFill();
-    stroke(0,  255 - abs(256 - particleA.lifespan));
-    PVector posA = particleA.position();
-    PVector posB = particleB.position();
-    line(posA.x, posA.y, posB.x, posB.y);
+    stroke(0,  255 - abs(256 - particleA.life()));
+    PVector pA = particleA.position();
+    PVector pB = particleB.position();
+    line(pA.x, pA.y, pB.x, pB.y);
   }
 
   public void springLength(float s) { springLength = s; }
