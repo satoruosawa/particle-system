@@ -6,13 +6,16 @@ class Spring extends MutualForce {
     super(particleA, particleB);
   }
 
-  public void updateParticles() {
+  public void willUpdateParticles() {
     PVector posBtoA = PVector.sub(particleA.position(), particleB.position());
     float dist = posBtoA.mag();
     float springForce = (springiness * (springLength - dist));
     posBtoA.normalize();
     particleA.addForce(posBtoA.mult(springForce));
     particleB.addForce(posBtoA.mult(-1.0));
+  }
+
+  public void didUpdateParticles() {
   }
 
   public void draw() {
