@@ -7,16 +7,22 @@ class ParticleSystem {
       p.resetForce();
     }
 
-    for (int i = mutualForces.size() - 1; i >= 0; i--) {
-      MutualForce m = mutualForces.get(i);
-      m.update();
-      if (m.isDead()) mutualForces.remove(i);
+    for (MutualForce m : mutualForces) {
+      m.willUpdateParticles();
     }
 
-    for (int i = particles.size() - 1; i >= 0; i--) {
-      Particle p = particles.get(i);
+    Iterator<Particle> particleIterator = particles.iterator();
+    while (particleIterator.hasNext()) {
+      Particle p = particleIterator.next();
       p.update();
-      if (p.isDead()) particles.remove(i);
+      if (p.isDead()) particleIterator.remove();
+    }
+
+    Iterator<MutualForce> mutualForceIterator = mutualForces.iterator();
+    while (mutualForceIterator.hasNext()) {
+      MutualForce m = mutualForceIterator.next();
+      if (m.isDead()) mutualForceIterator.remove();
+      m.didUpdateParticles();
     }
   }
 

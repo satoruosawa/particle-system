@@ -17,6 +17,7 @@ class Particle {
   }
 
   public void resetForce() { force.set(0, 0); }
+  public boolean isDead() { return false; }
 
   public void position(PVector p) { position = p; }
   public void velocity(PVector v) { velocity = v; }

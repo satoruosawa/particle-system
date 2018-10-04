@@ -30,6 +30,7 @@ class Particle {
 
   public void resetForce() { force.set(0, 0); }
   public void addForce(PVector f) { force.add(f); }
+  public boolean isDead() { return false; }
   public void collide() { flagCollide = true; }
   public void addField(Field f) { fields.add(f); }
 

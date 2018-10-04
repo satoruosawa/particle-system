@@ -6,7 +6,7 @@ class Attraction extends MutualForce {
     super(particleA, particleB);
   }
 
-  public void updateParticles() {
+  public void willUpdateParticles() {
     PVector positionAfromB = PVector.sub(
       particleA.position(),
       particleB.position()
@@ -19,6 +19,9 @@ class Attraction extends MutualForce {
       particleA.addForce(forceToAdd);
       particleB.addForce(forceToAdd.mult(-1.0));
     }
+  }
+
+  public void didUpdateParticles() {
   }
 
   public void draw() {

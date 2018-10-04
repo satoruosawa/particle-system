@@ -8,11 +8,15 @@ class ParticleSystem {
     }
 
     for (MutualForce m : mutualForces) {
-      m.update();
+      m.willUpdateParticles();
     }
 
     for (Particle p : particles) {
       p.update();
+    }
+
+    for (MutualForce m : mutualForces) {
+      m.didUpdateParticles();
     }
   }
 
