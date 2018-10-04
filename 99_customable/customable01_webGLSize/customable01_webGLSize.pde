@@ -34,6 +34,7 @@ void draw() {
 
 void addSpring() {
   Particle pA = new Particle();
+  pA.addField(basicField);
   pA.position(calcPos(new PVector(random(0., width), random(0., height))));
   pA.size(20.0 / SCALE);
   particleSystem.addParticle(pA);
@@ -41,6 +42,7 @@ void addSpring() {
   float posBAngle = random(0.0, TWO_PI);
   float posBLength = 60.0 / SCALE;
   Particle pB = new Particle();
+  pB.addField(basicField);
   pB.position(
     new PVector(
       pA.position().x + posBLength * cos(posBAngle),
@@ -58,6 +60,7 @@ void addSpring() {
 
 void addAttraction() {
   Particle pA = new Particle();
+  pA.addField(basicField);
   pA.position(calcPos(new PVector(random(0.0, width), random(0.0, height))));
   pA.size(20.0 / SCALE);
   particleSystem.addParticle(pA);
@@ -65,6 +68,7 @@ void addAttraction() {
   float posBAngle = random(0.0, TWO_PI);
   float posBLength = 60.0 / SCALE;
   Particle pB = new Particle();
+  pB.addField(basicField);
   pB.position(calcPos(new PVector(random(0.0, width), random(0.0, height))));
   pB.size(20.0 / SCALE);
   particleSystem.addParticle(pB);

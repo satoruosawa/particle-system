@@ -32,7 +32,6 @@ class BasicField extends Field {
   }
 
   private void bounceOfWalls(Particle particle) {
-    // BUG: don't work properly
     float xmin = -1.0 + particle.size() / 2.0;
     float xmax = 1.0 - particle.size() / 2.0;
     float ymin = -1.0 + particle.size() / 2.0;
