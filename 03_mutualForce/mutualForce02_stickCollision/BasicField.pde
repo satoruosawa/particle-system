@@ -5,6 +5,7 @@ class BasicField extends Field {
 
   public BasicField() {
     super();
+    wallBehavior = WallBehavior.NOTHING;
     friction = 0;
     coef = 1;
   }
@@ -85,5 +86,6 @@ class BasicField extends Field {
 
 enum WallBehavior {
   BOUNCE,
-  THROUGH
+  THROUGH,
+  NOTHING
 };
