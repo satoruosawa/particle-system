@@ -21,7 +21,7 @@ void draw() {
 void addSpring() {
   Particle pA = new Particle();
   pA.position(new PVector(random(0., width), random(0., height)));
-  pA.lifespan(511);
+  pA.life(511);
   pA.size(20);
   particleSystem.addParticle(pA);
 
@@ -34,7 +34,7 @@ void addSpring() {
       pA.position().y + posBLength * sin(posBAngle)
     )
   );
-  pB.lifespan(511);
+  pB.life(511);
   pB.size(20);
   particleSystem.addParticle(pB);
 

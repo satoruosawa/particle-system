@@ -5,8 +5,6 @@ class Particle {
   private float size = 1;
   color particleColor = -1;
 
-  public void resetForce() { force.set(0, 0); }
-
   public void update() {
     velocity.add(force);
     position.add(velocity);
@@ -17,6 +15,8 @@ class Particle {
     fill(particleColor);
     rect(position.x, position.y, size, size);
   }
+
+  public void resetForce() { force.set(0, 0); }
 
   public void position(PVector p) { position = p; }
   public void velocity(PVector v) { velocity = v; }

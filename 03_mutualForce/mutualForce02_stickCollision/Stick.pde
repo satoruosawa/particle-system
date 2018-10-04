@@ -9,33 +9,36 @@ class Stick extends MutualForce {
   }
 
   public void didUpdateParticles() {
-    PVector posAtoB = PVector.sub(particleB.position(), particleA.position());
-    float diff = posAtoB.mag() - stickLength;
-    posAtoB.normalize();
-    PVector posAToAdd;
-    PVector posBToAdd;
-    if (particleA.fragCollide()) {
-      posAToAdd = new PVector(0, 0);
-      posBToAdd = posAtoB.mult(-diff);
-    } else if (particleB.fragCollide()) {
-      posAToAdd = posAtoB.mult(diff);
-      posBToAdd = new PVector(0, 0);
+    PVector positionAfromB = PVector.sub(
+      particleB.position(),
+      particleA.position()
+    );
+    float diff = positionAfromB.mag() - stickLength;
+    positionAfromB.normalize();
+    PVector positionAToAdd;
+    PVector positionBToAdd;
+    if (particleA.flagCollide()) {
+      positionAToAdd = new PVector(0, 0);
+      positionBToAdd = positionAfromB.mult(-diff);
+    } else if (particleB.flagCollide()) {
+      positionAToAdd = positionAfromB.mult(diff);
+      positionBToAdd = new PVector(0, 0);
     } else {
-      posAToAdd = PVector.mult(posAtoB, diff * 0.5);
-      posBToAdd = PVector.mult(posAtoB, -diff * 0.5);
+      positionAToAdd = PVector.mult(positionAfromB, diff * 0.5);
+      positionBToAdd = PVector.mult(positionAfromB, -diff * 0.5);
     }
-    particleA.position().add(posAToAdd);
-    particleA.velocity().add(posAToAdd);
-    particleB.position().add(posBToAdd);
-    particleB.velocity().add(posBToAdd);
+    particleA.position().add(positionAToAdd);
+    particleA.velocity().add(positionAToAdd);
+    particleB.position().add(positionBToAdd);
+    particleB.velocity().add(positionBToAdd);
   }
 
   public void draw() {
     noFill();
     stroke(0);
-    PVector posA = particleA.position();
-    PVector posB = particleB.position();
-    line(posA.x, posA.y, posB.x, posB.y);
+    PVector pA = particleA.position();
+    PVector pB = particleB.position();
+    line(pA.x, pA.y, pB.x, pB.y);
   }
 
   public void stickLength(float s) { stickLength = s; }

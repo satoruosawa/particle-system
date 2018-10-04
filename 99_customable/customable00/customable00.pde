@@ -7,6 +7,7 @@ void setup() {
   rectMode(CENTER);
 
   basicField.friction(0.0);
+  basicField.wallBehavior(WallBehavior.BOUNCE);
 
   Particle p = new Particle();
   p.addField(basicField);

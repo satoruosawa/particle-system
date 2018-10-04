@@ -8,7 +8,7 @@ void update() {
   Particle p = new Particle();
   p.position(new PVector(width / 2, height / 2));
   p.velocity(new PVector(random(-1, 1), random(-1, 1)));
-  p.lifespan(255);
+  p.life(255);
   p.size(20);
   particleSystem.addParticle(p);
   particleSystem.update();

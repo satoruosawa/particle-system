@@ -6,9 +6,6 @@ class Particle {
   private float size = 1;
   private boolean flagCollide = false;
 
-  public void resetForce() { force.set(0, 0); }
-  public void addForce(PVector f) { force.add(f); }
-
   public void update() {
     flagCollide = false;
     for (Field f : fields) {
@@ -31,6 +28,8 @@ class Particle {
     ellipse(position.x, position.y, size, size);
   }
 
+  public void resetForce() { force.set(0, 0); }
+  public void addForce(PVector f) { force.add(f); }
   public void collide() { flagCollide = true; }
   public void addField(Field f) { fields.add(f); }
 
@@ -38,7 +37,7 @@ class Particle {
   public void velocity(PVector v) { velocity = v; }
   public void size(float s) { size = s; }
 
-  public boolean fragCollide() { return flagCollide; }
+  public boolean flagCollide() { return flagCollide; }
   public PVector position() { return position; }
   public PVector velocity() { return velocity; }
   public float size() { return size; }

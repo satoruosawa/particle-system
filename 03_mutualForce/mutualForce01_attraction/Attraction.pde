@@ -7,23 +7,26 @@ class Attraction extends MutualForce {
   }
 
   public void updateParticles() {
-    PVector posBtoA = PVector.sub(particleA.position(), particleB.position());
-    float distance = posBtoA.mag();
+    PVector positionAfromB = PVector.sub(
+      particleA.position(),
+      particleB.position()
+    );
+    float distance = positionAfromB.mag();
     if (distance < sleshhold) {
-      float pct = 1 - (distance / sleshhold);
-      posBtoA.normalize();
-      PVector frcToAdd = posBtoA.mult(-pct * strength);
-      particleA.addForce(frcToAdd);
-      particleB.addForce(frcToAdd.mult(-1.0));
+      float coef = 1 - (distance / sleshhold);
+      positionAfromB.normalize();
+      PVector forceToAdd = positionAfromB.mult(-coef * strength);
+      particleA.addForce(forceToAdd);
+      particleB.addForce(forceToAdd.mult(-1.0));
     }
   }
 
   public void draw() {
     noFill();
-    stroke(0,  255 - abs(256 - particleA.lifespan));
-    PVector posA = particleA.position();
-    PVector posB = particleB.position();
-    line(posA.x, posA.y, posB.x, posB.y);
+    stroke(0,  255 - abs(256 - particleA.life()));
+    PVector pA = particleA.position();
+    PVector pB = particleB.position();
+    line(pA.x, pA.y, pB.x, pB.y);
   }
 
   public void strength(float s) { strength = s; }

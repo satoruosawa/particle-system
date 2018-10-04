@@ -4,7 +4,7 @@ class Particle {
   protected PVector velocity = new PVector(0, 0);
   protected PVector force = new PVector(0, 0);
   protected color particleColor = color(0);
-  protected float size = 1;
+  protected float size = 1.0;
 
   public void resetForce() { force.set(0, 0); }
   public void addForce(PVector f) { force.add(f); }
